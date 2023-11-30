@@ -1,4 +1,4 @@
-# racket-advent22
+# racket-advent23
 
 [Advent of Code 2023][def]
 
