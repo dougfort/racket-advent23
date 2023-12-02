@@ -36,20 +36,28 @@ zoneight234
 7pqrstsixteen
 ")
 
+;; ordered by length
 (define text-digits
   (list
-   '("one" "1")
-   '("two" "2")
+   '("oneight" "18")
+   '("twone" "21")
+   '("threeight" "38")
+   '("fiveight" "58")
+   '("sevenine" "79")
+   '("eightwo" "82")
+   '("nineight" "98")
    '("three" "3")
-   '("four" "4")
-   '("five"  "5")
-   '("six" "6")
    '("seven" "7")
    '("eight" "8")
-   '("nine" "9")))
+   '("four" "4")
+   '("five"  "5")
+   '("nine" "9")
+   '("one" "1")
+   '("two" "2")
+   '("six" "6")))
 
 (define (replace-prefix-digit in-str)
-  (let ([match (for/last ([digit-pair (in-list text-digits)]
+  (let ([match (for/first ([digit-pair (in-list text-digits)]
                           #:when (string-prefix? in-str (first digit-pair)))
                  digit-pair)])
     (cond
@@ -67,7 +75,7 @@ zoneight234
        (let-values ([(next-in next-out) (replace-prefix-digit in-str)])
          (loop next-in (string-append out-str next-out)))])))      
 
-(define part-2-test-data (split-raw (replace-text-digits raw-part-2-test-data)))
+(define part-2-test-data (map replace-text-digits (split-raw raw-part-2-test-data)))
 
 (define data-id "advent01.data")
 
@@ -75,4 +83,4 @@ zoneight234
 
 (define part-1-data (split-raw data))
 
-(define part-2-data (split-raw (replace-text-digits data)))
+(define part-2-data (map replace-text-digits (split-raw data)))

@@ -29,8 +29,8 @@
   (test-begin
    (define part-1-values (apply + (map parse-line part-1-test-data)))
    (check-equal? part-1-values 142))
-   (define part-2-values (apply + (map parse-line part-2-test-data)))
-   (check-equal? part-2-values 281))
+  (define part-2-values (apply + (map parse-line part-2-test-data)))
+  (check-equal? part-2-values 281))
    
 (define part-1-sum-of-calibration-values (apply + (map parse-line part-1-data)))
 (define part-2-sum-of-calibration-values (apply + (map parse-line part-2-data)))
