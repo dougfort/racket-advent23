@@ -11,11 +11,7 @@
  part-2-data
  )
 
-(define (split-raw raw)
-  (~>
-   raw
-   string-trim
-   (string-split "\n")))
+(require "data-tools.rkt")
 
 (define raw-part-1-test-data
   "1abc2
@@ -79,7 +75,7 @@ zoneight234
 
 (define data-id "advent01.data")
 
-(define data (port->string (open-input-file data-id) #:close? #t))
+(define data (data-from-file data-id))
 
 (define part-1-data (split-raw data))
 

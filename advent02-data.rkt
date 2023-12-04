@@ -15,6 +15,8 @@
  test-data
  data)
 
+(require "data-tools.rkt")
+
 (module+ test
   (require rackunit))
 
@@ -23,12 +25,6 @@
 
 (struct game-result (id cubesets)
   #:transparent)
-
-(define (split-raw raw)
-  (~>
-   raw
-   string-trim
-   (string-split "\n")))
 
 (define (parse raw-str)
   (map parse-game (split-raw raw-str)))
@@ -60,7 +56,7 @@ Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
 
 (define data-id "advent02.data")
 
-(define raw-data (port->string (open-input-file data-id) #:close? #t))
+(define raw-data (data-from-file data-id))
 
 (define test-data (parse raw-test-data))
 (define data (parse raw-data))
